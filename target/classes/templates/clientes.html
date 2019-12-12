@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Cadastro de Clientes</title>
+</head>
+<body>
+    <section>
+
+        <div class="row">
+            <div class="col-md-2">
+                <a th:href="@{/clientes/novo}" class="btn btn-primary">Novo</a>
+            </div>
+            <div class="col-md-6">
+                <form method="post" th:action="@{/clientes/pesquisar}">
+                    <div class="col-md-8">
+                        <input type="text" name="nome" class="form-control" placeholder="Pesquisar..."/>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary">Pesquisar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div align="right">
+                    <a href="#" class="btn btn-primary">Exportar</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <br/>
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>RG</th>
+                        <th>CPF</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="cliente : ${lista_clientes}">
+                        <td>
+                            <a th:href="@{/clientes/}+${cliente.codigo}" th:text="${cliente.nome}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{/clientes/}+${cliente.codigo}" th:text="${cliente.rg}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{/clientes/}+${cliente.codigo}" th:text="${cliente.cpf}"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+</body>
+</html>
